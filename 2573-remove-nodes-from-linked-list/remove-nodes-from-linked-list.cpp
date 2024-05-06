@@ -11,6 +11,7 @@
 class Solution {
 public:
     ListNode* removeNodes(ListNode* head) {
+        ios_base::sync_with_stdio(0);
         deque<int> nodes;
         nodes.push_front(head->val);
         ListNode* tmp = head->next;
