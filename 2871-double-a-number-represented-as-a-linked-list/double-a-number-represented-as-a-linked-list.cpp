@@ -19,14 +19,14 @@ public:
             tmp = tmp->next;
         }
 
-        while (tmp->next){
+        while (tmp){
             tmp->val = (tmp->val * 2) % 10;
+            if (!tmp->next) break;
             if (tmp->next->val >= 5){
                 tmp->val++;
             }
             tmp = tmp->next;
         }
-        tmp->val = (tmp->val * 2) % 10;
 
         return head;
     }
