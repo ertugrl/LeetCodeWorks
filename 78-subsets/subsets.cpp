@@ -7,8 +7,8 @@ public:
         for (int i = 0; i < uppBound; i++){
             vector<int> innerV;
             int nthBit = 0;
-            for (int j = i; j > 0; j /= 2){
-                if (j % 2 != 0){
+            for (int j = i; j > 0; j >>= 1){
+                if (j & 1){
                     innerV.push_back(nums[nthBit]);
                 }
                 nthBit++;
