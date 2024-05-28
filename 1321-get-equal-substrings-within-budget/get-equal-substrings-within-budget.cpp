@@ -1,23 +1,31 @@
 class Solution {
 public:
     int equalSubstring(string s, string t, int maxCost) {
-        vector<int> prefSum(s.size() + 1, 0);
+        int n = s.size();
+        vector<int> cost(n);
         
-        for (int i = 1; i <= s.size(); i++) {
-            prefSum[i] = prefSum[i - 1] + abs(s[i - 1] - t[i - 1]);
-            cout << prefSum[i] << endl;
+        // Calculate the cost array
+        for (int i = 0; i < n; i++) {
+            cost[i] = abs(s[i] - t[i]);
         }
-
-        int rg = 1, lf = 0, maxLength = 0;
-        while (rg <= s.size()){
-            if (prefSum[rg] - prefSum[lf] <= maxCost){
-                maxLength = max(maxLength, rg - lf);
-                rg++;
-            } else {
-                lf++;
+        
+        int maxLength = 0;
+        int currentCost = 0;
+        int start = 0;
+        
+        for (int end = 0; end < n; end++) {
+            currentCost += cost[end];
+            
+            // If the currentCost exceeds maxCost, shrink the window from the left
+            while (currentCost > maxCost) {
+                currentCost -= cost[start];
+                start++;
             }
+            
+            // Calculate the length of the current valid substring
+            maxLength = max(maxLength, end - start + 1);
         }
-
+        
         return maxLength;
     }
 };
