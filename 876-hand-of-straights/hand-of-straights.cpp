@@ -1,8 +1,8 @@
 class Solution {
 public:
     bool isNStraightHand(vector<int>& hand, int groupSize) {
-        ios::sync_with_stdio(false);
-        cin.tie(nullptr); cout.tie(nullptr);
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
         if (hand.size() % groupSize != 0) return false;
         unordered_map<int, int> mp;
         for (int i = 0; i < hand.size(); ++i){
