@@ -6,11 +6,9 @@ public:
         sort(nums.begin(), nums.end());
         int result = 0; 
         for (int i = 1; i < nums.size(); ++i){
-            int curr = nums[i];
-            int prev = nums[i - 1];
-            for (int j = 0; j <= prev - curr; ++j){
-                nums[i]++;
-                result++;
+            if (nums[i] <= nums[i - 1]){
+                result += nums[i - 1] - nums[i] + 1;
+                nums[i] = nums[i - 1] + 1;
             }
         }
 
