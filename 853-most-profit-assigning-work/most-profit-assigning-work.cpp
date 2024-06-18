@@ -7,6 +7,7 @@ public:
         }
 
         // Binary search in ordered difficulty values to find the job that is closest to the worker's ability
+        // This binary search works differently than others
         int left = 0, mid = 0, right = size;
         while (left <= right) {
             mid = (left + right) / 2;
@@ -47,6 +48,16 @@ public:
         for (int i = 0; i < size; ++i) {
             if (works[i].second > maxProf) {
                 maxProf = works[i].second;
+                // When there are multiple works with the same difficulty value
+                // We need to update previous profit values of these works
+                /* for this case, "35"
+                    difficulty =
+                        [23,30,35,35,35,43,46,47,81,83,98]
+                    profit =
+                        [8,11,11,20,25,33,37,60,72,87,95]
+                    worker =
+                        [95,46,47,97,11,35,99,56,41,92]
+                */
                 int tmp = i;
                 while (tmp > 0 && works[tmp - 1].first == works[tmp].first) {
                     works[tmp-- - 1].second = maxProf;
