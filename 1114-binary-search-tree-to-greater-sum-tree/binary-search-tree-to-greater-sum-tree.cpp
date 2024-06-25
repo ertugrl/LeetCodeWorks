@@ -22,7 +22,6 @@ public:
                 s.push(curr);
                 curr = curr->right;
             }
-            cout << s.top()->val << endl;
             curr = s.top();
             curr->val += sum;
             sum = curr->val;
