@@ -16,8 +16,7 @@ public:
 
         int diff = INT_MAX;
         for (int i = 0; i < 4; ++i) {
-            if (nums[nums.size() + i - 4] - nums[i] < diff)
-                diff = nums[nums.size() + i - 4] - nums[i];
+            diff = min(diff, nums[nums.size() + i - 4] - nums[i]);
         }
 
         return diff;
