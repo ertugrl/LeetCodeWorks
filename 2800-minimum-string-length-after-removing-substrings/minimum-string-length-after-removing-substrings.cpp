@@ -3,10 +3,8 @@ public:
     int minLength(string s) {
         stack<char> letters;
         for (int i = 0; i < s.size(); ++i) {
-            if (!letters.empty() && letters.top() == 'A' && s[i] == 'B') {
-                letters.pop();
-                continue;
-            } else if (!letters.empty() && letters.top() == 'C' && s[i] == 'D') {
+            if (!letters.empty() && ((letters.top() == 'A' && s[i] == 'B') || 
+                (letters.top() == 'C' && s[i] == 'D'))) {
                 letters.pop();
                 continue;
             }
