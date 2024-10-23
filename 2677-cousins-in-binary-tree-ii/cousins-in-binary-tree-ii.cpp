@@ -45,18 +45,12 @@ public:
             int currDepth = cousinsQ.front().second;
             TreeNode* currPtr = cousinsQ.front().first;
 
-            int siblingSum = 0;
-            int leftVal = 0;
-            int rightVal = 0;
-
             bool leftExist = (currPtr->left != nullptr);
             bool rightExist = (currPtr->right != nullptr);
-            if (leftExist) {
-                leftVal = currPtr->left->val;
-            }
-            if (rightExist) {
-                rightVal = currPtr->right->val;
-            }
+
+            int siblingSum = 0;
+            int leftVal = currPtr->left ? currPtr->left->val : 0;
+            int rightVal = currPtr->right ? currPtr->right->val : 0;
             siblingSum = leftVal + rightVal;
             
             // update the node values
