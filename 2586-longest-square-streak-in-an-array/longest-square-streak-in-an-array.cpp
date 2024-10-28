@@ -13,10 +13,7 @@ auto init = []() {
 class Solution {
 public:
     int longestSquareStreak(vector<int>& nums) {
-        set<long long> hashSet;
-        for (int i = 0; i < nums.size(); ++i) {
-            hashSet.insert(nums[i]);
-        }
+        set<long long> hashSet(nums.begin(), nums.end());
 
         long long maxCount = 1;
         
